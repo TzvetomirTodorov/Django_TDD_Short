@@ -8,22 +8,12 @@
 	<header>
 		<h1>Bounce</h1>
 	</header>
-	<ul>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
-		<li class="link"><a href=""></a></li>
+	<ul id="links">
+		{% for link in links %}
+		<li class="link">
+			<a href="{{ link.url }}">{{ link.title }}</a>
+		</li>
+		{% endfor %}
 	</ul>
 </body>
 </html>

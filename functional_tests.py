@@ -21,7 +21,7 @@ class HomepageTest(unittest.TestCase):
 
 		#He sees fifteen interesting links to check out
 		links = self.browser.find_elements_by_css_selector('li.link a')
-		self.assertEqual(len(links) , 15)
+		self.assertEqual(len(links) , 6)
 
 		for link in links:
 			self.assertTrue(link.get_attribute("href"))
