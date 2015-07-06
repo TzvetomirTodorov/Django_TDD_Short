@@ -1,9 +1,7 @@
-# import unittest
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+import unittest
 from selenium import webdriver
 
-# class HomepageTest(unittest.TestCase):
-class HomepageTest(StaticLiveServerTestCase):
+class HomepageTest(unittest.TestCase):
 
 	def setUp(self):
 		self.browser = webdriver.Chrome()
@@ -14,8 +12,7 @@ class HomepageTest(StaticLiveServerTestCase):
 
 	def test_homepage_layout(self):
 		#Charlie opens his web browser and goes to the Bounce HomepageTest
-		# self.browser.get('http://localhost:8000')
-		self.browser.get(self.live_server_url)
+		self.browser.get('http://localhost:8000')
 
 		#He sees "Bounce" in the page header and the browser title
 		self.assertEqual(self.browser.title, "Bounce")
@@ -30,5 +27,5 @@ class HomepageTest(StaticLiveServerTestCase):
 			self.assertTrue(link.get_attribute("href"))
 			self.assertTrue(link.text)
 
-# if __name__	== '__main__':
-# 	unittest.main(warnings='ignore')
+if __name__	== '__main__':
+	unittest.main(warnings='ignore')
