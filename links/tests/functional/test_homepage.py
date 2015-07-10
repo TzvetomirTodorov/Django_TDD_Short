@@ -1,17 +1,12 @@
 # import unittest
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-from selenium import webdriver
+# from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+# from selenium import webdriver
+from links.tests.functional.base import FunctionalTest
 
 # class HomepageTest(unittest.TestCase):
-class HomepageSmallTest(StaticLiveServerTestCase):
+class HomepageSmallTest(FunctionalTest):
 	fixtures = ['data-small.json']
-
-	def setUp(self):
-		self.browser = webdriver.Chrome()
-
-	def tearDown(self):
-		self.browser.quit()
-		
+	
 	def test_homepage_layout(self):
 		#Charlie opens his web browser and goes to the Bounce HomepageTest
 		# self.browser.get('http://localhost:8000')
@@ -31,14 +26,8 @@ class HomepageSmallTest(StaticLiveServerTestCase):
 			self.assertTrue(link.text)
 
 
-class HomepageLargeTests(StaticLiveServerTestCase):
+class HomepageLargeTest(FunctionalTest):
 	fixtures = ['data-large.json']
-
-	def setUp(self):
-		self.browser = webdriver.Chrome()
-
-	def tearDown(self):
-		self.browser.quit()
 		
 	def test_large_homepage_layout(self):
 		
@@ -54,13 +43,7 @@ class HomepageLargeTests(StaticLiveServerTestCase):
 			self.assertTrue(link.text)
 
 
-class HomepageEmptyTest(StaticLiveServerTestCase):
-
-	def setUp(self):
-		self.browser = webdriver.Chrome()
-
-	def tearDown(self):
-		self.browser.quit()
+class HomepageEmptyTest(FunctionalTest):
 
 	def test_empty_homepage_layout(self):
 
