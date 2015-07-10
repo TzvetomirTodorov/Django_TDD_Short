@@ -1,9 +1,32 @@
 # import unittest
 # from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 # from selenium import webdriver
+from bounce.settings import BASE_DIR
 from links.tests.functional.base import FunctionalTest
 
 # class HomepageTest(unittest.TestCase):
+
+# class MyCSSTest(unittest.TestCase):
+
+# 	def setUp(self):
+# 		self.browser = webdriver.Chrome()
+
+# 	def tearDown(self):
+# 		self.browser.quit()
+
+# 	maxDiff = None
+# 	def test_homepage_stylesheet(self):
+# 		self.browser.get('http://127.0.0.1:8000/')
+# 		css_link = self.browser.find_element_by_css_selector('link[rel="stylesheet"]')
+# 		self.browser.get(css_link.get_attribute('href'))
+# 		css_used = self.browser.find_element_by_tag_name('body').text
+
+# 		with open (BASE_DIR + '/links/static/css/main.css', "r") as css_file:
+# 			actual_css = css_file.read().strip()
+
+# 		self.assertEqual(css_used, actual_css)
+
+
 class HomepageSmallTest(FunctionalTest):
 	fixtures = ['data-small.json']
 	
@@ -24,6 +47,18 @@ class HomepageSmallTest(FunctionalTest):
 		for link in links:
 			self.assertTrue(link.get_attribute("href"))
 			self.assertTrue(link.text)
+
+	maxDiff = None	
+	def test_homepage_stylesheet(self):
+		self.browser.get(self.live_server_url)
+		css_link = self.browser.find_element_by_css_selector('link[rel="stylesheet"]')
+		self.browser.get(css_link.get_attribute('href'))
+		css_used = self.browser.find_element_by_tag_name('body').text
+
+		with open (BASE_DIR + '/links/static/css/main.css', "r") as css_file:
+			actual_css = css_file.read().strip()
+
+		self.assertEqual(css_used, actual_css)
 
 
 class HomepageLargeTest(FunctionalTest):
