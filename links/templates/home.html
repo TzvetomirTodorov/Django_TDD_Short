@@ -13,6 +13,8 @@
 		<li class="link">
 			<a href="{{ link.url }}">{{ link.title }}</a>
 		</li>
+		{% empty %}
+		<p id="no-links">Sorry, no links have been posted.</p>
 		{% endfor %}
 	</ul>
 </body>

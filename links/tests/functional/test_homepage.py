@@ -3,7 +3,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 
 # class HomepageTest(unittest.TestCase):
-class HomepageTest(StaticLiveServerTestCase):
+class HomepageSmallTest(StaticLiveServerTestCase):
 	fixtures = ['data-small.json']
 
 	def setUp(self):
@@ -12,7 +12,6 @@ class HomepageTest(StaticLiveServerTestCase):
 	def tearDown(self):
 		self.browser.quit()
 		
-
 	def test_homepage_layout(self):
 		#Charlie opens his web browser and goes to the Bounce HomepageTest
 		# self.browser.get('http://localhost:8000')
@@ -30,6 +29,50 @@ class HomepageTest(StaticLiveServerTestCase):
 		for link in links:
 			self.assertTrue(link.get_attribute("href"))
 			self.assertTrue(link.text)
+
+
+class HomepageLargeTests(StaticLiveServerTestCase):
+	fixtures = ['data-large.json']
+
+	def setUp(self):
+		self.browser = webdriver.Chrome()
+
+	def tearDown(self):
+		self.browser.quit()
+		
+	def test_large_homepage_layout(self):
+		
+		#D opens his web browser and goes to the Bounce homepage
+		self.browser.get(self.live_server_url)
+
+		#He sees fifteen interesting links to check out
+		links = self.browser.find_elements_by_css_selector('li.link a')
+		self.assertEqual(len(links), 15)
+
+		for link in links:
+			self.assertTrue(link.get_attribute("href"))
+			self.assertTrue(link.text)
+
+
+class HomepageEmptyTest(StaticLiveServerTestCase):
+
+	def setUp(self):
+		self.browser = webdriver.Chrome()
+
+	def tearDown(self):
+		self.browser.quit()
+
+	def test_empty_homepage_layout(self):
+
+		#Bobby opens his web browser and goes to the Bounce homepage
+		self.browser.get(self.live_server_url)
+
+		#No links have been posted so he only sees a "no links" message
+		links = self.browser.find_elements_by_css_selector('li.link a')
+		self.assertEqual(len(links), 0)
+
+		message = self.browser.find_element_by_id('no-links').text
+		self.assertEqual(message, "Sorry, no links have been posted.")
 
 # if __name__	== '__main__':
 # 	unittest.main(warnings='ignore')
