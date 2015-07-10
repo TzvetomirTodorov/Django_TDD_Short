@@ -4,6 +4,7 @@ from selenium import webdriver
 
 # class HomepageTest(unittest.TestCase):
 class HomepageTest(StaticLiveServerTestCase):
+	fixtures = ['data-small.json']
 
 	def setUp(self):
 		self.browser = webdriver.Chrome()
