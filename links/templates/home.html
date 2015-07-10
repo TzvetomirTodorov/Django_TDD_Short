@@ -13,8 +13,10 @@
 		{% for link in links %}
 		<li class="link">
 			<a href="{{ link.url }}">{{ link.title }}</a>
+			<small class="link-domain">{{ link.domain }}</small>
 			<div class="submission‐info">
 				<span class="submitted‐by">{{ link.submitted_by }}</span>
+				<span class="submitted-at">{{ link.submitted|timesince }} ago</span>
 			</div>
 		</li>
 		{% empty %}

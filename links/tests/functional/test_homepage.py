@@ -52,6 +52,15 @@ class HomepageSmallTest(FunctionalTest):
 		username = self.browser.find_element_by_css_selector('.link span.submitted‐by')
 		self.assertEqual(username.text, "ttodorov")
 
+		#He notices that the first link was submitted some time ago
+		time_ago = self.browser.find_element_by_css_selector('.link span.submitted-at').text
+		self.assertTrue(time_ago.replace('ago', ''))
+		
+		#He notices that the first link is from http://ward.com/wp-content/about.php
+		domain = self.browser.find_element_by_css_selector('.link small.link-domain').text
+		self.assertEqual(domain, "vimeo.com") 
+		
+
 
 	maxDiff = None
 	@unittest.skip('Silly test.')	
@@ -86,6 +95,16 @@ class HomepageLargeTest(FunctionalTest):
 		#He notices that the first link was submitted by ttodorov
 		username = self.browser.find_element_by_css_selector('.link span.submitted‐by')
 		self.assertEqual(username.text, "ttodorov")
+
+		#He notices that the first link was submitted some time ago
+		time_ago = self.browser.find_element_by_css_selector('.link span.submitted-at').text
+		self.assertTrue(time_ago.replace('ago', ''))
+		
+		#He notices that the first link is from http://ward.com/wp-content/about.php
+		domain = self.browser.find_element_by_css_selector('.link small.link-domain').text
+		self.assertEqual(domain, "ward.com")
+
+
 
 class HomepageEmptyTest(FunctionalTest):
 

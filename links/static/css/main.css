@@ -35,3 +35,19 @@ li.link{
 li.link:hover{
 	box-shadow: -5px 0 7px #D6D5D4;
 }
+
+li.link>a, div.submission-info span{
+	margin-right: .5em
+}
+
+small.link-domain{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: #B4B4B8;
+	font-size: small;
+}
+
+div.submission-info{
+	color: #888;
+	font-size: .85em;
+	margin-top: 5px;
+}
