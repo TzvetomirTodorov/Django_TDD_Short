@@ -15,12 +15,28 @@ a:hover{
 	color: #181818;
 }
 
+header{
+	position: relative;
+}
+
 header h1{
 	font-family: 'Carter One';
 	color: #24A;
 }
 
-ul#links{
+nav>ul{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+nav>ul>li{
+	display: inline-block;
+	margin-left: 
+}
+
+nav>ul, ul#links{
+	margin: 0;
 	padding: 0;
 	list-style-type: none;
 }

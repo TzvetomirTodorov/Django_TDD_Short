@@ -8,6 +8,16 @@
 <body>
 	<header>
 		<h1>Bounce</h1>
+		<nav>
+			<ul>
+				{% if user.is_authenticated %}
+				<li>{{ user }}</li>
+				<li><a href="/logout" id="logout">Logout</a></li>
+				{% else %}
+				<li><a href="/login" id="login">Login</a></li>
+				{% endif %}
+			</ul>
+		</nav>
 	</header>
 	<ul id="links">
 		{% for link in links %}
