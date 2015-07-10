@@ -1,0 +1,20 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "date_joined": "2015-07-06T17:31:07.537Z",
+        "last_name": "",
+        "user_permissions": [],
+        "groups": [],
+        "is_staff": true,
+        "username": "ttodorov",
+        "is_active": true,
+        "is_superuser": true,
+        "email": "ttodorov@locqus.com",
+        "first_name": "",
+        "password": "pbkdf2_sha256$20000$1MTujDBbbRxe$NZpgSc9YZ1J4EqA3g/LSbqyT5Gy9s+lXMkNIlMbYKOE=",
+        "last_login": "2015-07-06T17:31:20.323Z"
+    }
+}
+]

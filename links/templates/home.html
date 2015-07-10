@@ -13,6 +13,9 @@
 		{% for link in links %}
 		<li class="link">
 			<a href="{{ link.url }}">{{ link.title }}</a>
+			<div class="submission‐info">
+				<span class="submitted‐by">{{ link.submitted_by }}</span>
+			</div>
 		</li>
 		{% empty %}
 		<p id="no-links">Sorry, no links have been posted.</p>

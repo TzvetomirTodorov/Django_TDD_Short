@@ -1,4 +1,4 @@
-# import unittest
+import unittest
 # from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 # from selenium import webdriver
 from bounce.settings import BASE_DIR
@@ -28,9 +28,9 @@ from links.tests.functional.base import FunctionalTest
 
 
 class HomepageSmallTest(FunctionalTest):
-	fixtures = ['data-small.json']
+	fixtures = ['data-small.json', 'users.json']
 	
-	def test_homepage_layout(self):
+	def test_small_homepage_layout(self):
 		#Charlie opens his web browser and goes to the Bounce HomepageTest
 		# self.browser.get('http://localhost:8000')
 		self.browser.get(self.live_server_url)
@@ -48,7 +48,13 @@ class HomepageSmallTest(FunctionalTest):
 			self.assertTrue(link.get_attribute("href"))
 			self.assertTrue(link.text)
 
-	maxDiff = None	
+		#He notices that the first link was submitted by ttodorov
+		username = self.browser.find_element_by_css_selector('.link span.submitted‐by')
+		self.assertEqual(username.text, "ttodorov")
+
+
+	maxDiff = None
+	@unittest.skip('Silly test.')	
 	def test_homepage_stylesheet(self):
 		self.browser.get(self.live_server_url)
 		css_link = self.browser.find_element_by_css_selector('link[rel="stylesheet"]')
@@ -62,7 +68,7 @@ class HomepageSmallTest(FunctionalTest):
 
 
 class HomepageLargeTest(FunctionalTest):
-	fixtures = ['data-large.json']
+	fixtures = ['data-large.json', 'users.json']
 		
 	def test_large_homepage_layout(self):
 		
@@ -77,6 +83,9 @@ class HomepageLargeTest(FunctionalTest):
 			self.assertTrue(link.get_attribute("href"))
 			self.assertTrue(link.text)
 
+		#He notices that the first link was submitted by ttodorov
+		username = self.browser.find_element_by_css_selector('.link span.submitted‐by')
+		self.assertEqual(username.text, "ttodorov")
 
 class HomepageEmptyTest(FunctionalTest):
 
