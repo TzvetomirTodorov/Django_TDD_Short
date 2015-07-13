@@ -13,10 +13,15 @@ class FunctionalTest(StaticLiveServerTestCase):
 	def tearDown(self):
 		self.browser.quit()
 
-	def click_wait(self, element, seconds=.5):
+	def login(self, username, password):
+		self.browser.find_element_by_id('id_username').send_keys(username)
+		self.browser.find_element_by_id('id_password').send_keys(password)
+		login_button = self.browser.find_element_by_id('submit')
+		self.click_wait(login_button)
+
+	def click_wait(self,  element, seconds=.5):
 		element.click()
 		time.sleep(seconds)
-
 
 	def check_stylesheet(self, view_name):
 		self.browser.get("{0}{1}".format(self.live_server_url, reverse(view_name)))

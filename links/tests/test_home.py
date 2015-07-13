@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.core.urlresolvers import resolve, reverse
 from django.contrib.auth.views import login, logout
 from links.views import home
+from links.views import home, new_link
 from links.models import Link
 
 class HomeTest(TestCase):
@@ -34,3 +35,38 @@ class AuthTest(TestCase):
 	def test_logout_url_resolves_to_logout_view(self):
 		view_found = resolve('/logout/')
 		self.assertEqual(view_found.func, logout)
+
+class NewLinkTest(TestCase):
+	fixtures = ['users.json']
+
+	def test_new_link_view_requires_login(self):
+		response = self.client.get(reverse('new_link'), follow=True)
+		self.assertRedirects(response, '/login/?next=/submit/')
+
+	def test_new_link_url_resolves_to_new_link_view(self):
+		view_found = resolve('/submit/')
+		self.assertEqual(view_found.func, new_link)
+
+	def test_new_link_template_used_by_new_link_view(self):
+		self.client.login(username='test_user', password='test_password')
+		response = self.client.get(reverse('new_link'))
+		self.assertTemplateUsed(response, 'base.html')
+		self.assertTemplateUsed(response, 'new_link.html')
+
+	def test_new_link_view_can_receive_a_post_request(self):
+		self.assertEqual(Link.objects.count(), 0)
+
+		self.client.login(username='test_user', password='test_password')
+		response = self.client.post(reverse('new_link'), {
+			'title': 'Wired',
+			'url': 'http://www.wired.com/',
+			})
+
+		self.assertRedirects(response, '/')
+
+		self.assertEqual(Link.objects.count(), 1)
+		link = Link.objects.first()
+		self.assertEqual(link.title, 'Wired')
+		self.assertEqual(link.url, 'http://www.wired.com/')
+
+

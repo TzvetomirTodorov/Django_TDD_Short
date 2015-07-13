@@ -5,11 +5,11 @@ from links.tests.functional.base import FunctionalTest
 class AuthenticationTest(FunctionalTest):
 	fixtures = ['data-small.json', 'users.json']
 
-	def login(self, username, password):
-		self.browser.find_element_by_id('id_username').send_keys(username)
-		self.browser.find_element_by_id('id_password').send_keys(password)
-		login_button = self.browser.find_element_by_id('submit')
-		self.click_wait(login_button)
+	# def login(self, username, password):
+	# 	self.browser.find_element_by_id('id_username').send_keys(username)
+	# 	self.browser.find_element_by_id('id_password').send_keys(password)
+	# 	login_button = self.browser.find_element_by_id('submit')
+	# 	self.click_wait(login_button)
 
 	def test_user_can_login_and_logout(self):
 		# Q is browsing links on Bounce

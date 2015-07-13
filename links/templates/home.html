@@ -15,6 +15,7 @@
 	<ul>
 		{% if user.is_authenticated %}
 		<li>{{ user }}</li>
+		<li><a href="/submit" id="new-link">New Link</a></li>		
 		<li><a href="/logout" id="logout">Logout</a></li>
 		{% else %}
 		<li><a href="/login" id="login">Login</a></li>
