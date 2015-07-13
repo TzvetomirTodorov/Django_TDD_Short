@@ -19,8 +19,8 @@ header{
 	position: relative;
 }
 
-header h1{
-	font-family: 'Carter One';
+header>h1>a, header>h1>a:hover{
+	font-family: 'Carter One', sans-serif;
 	color: #24A;
 }
 
