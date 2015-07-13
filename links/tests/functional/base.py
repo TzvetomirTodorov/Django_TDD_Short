@@ -1,7 +1,9 @@
+import time
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.core.urlresolvers import reverse
 from selenium import webdriver
-from bounce.settings import BASE_DIR
+from bounce.settings import BASE_DIR\
+
 
 class FunctionalTest(StaticLiveServerTestCase):
 
@@ -10,6 +12,11 @@ class FunctionalTest(StaticLiveServerTestCase):
 
 	def tearDown(self):
 		self.browser.quit()
+
+	def click_wait(self, element, seconds=.5):
+		element.click()
+		time.sleep(seconds)
+
 
 	def check_stylesheet(self, view_name):
 		self.browser.get("{0}{1}".format(self.live_server_url, reverse(view_name)))

@@ -1,9 +1,15 @@
 import unittest
-import time
+# import time
 from links.tests.functional.base import FunctionalTest
 
 class AuthenticationTest(FunctionalTest):
 	fixtures = ['data-small.json', 'users.json']
+
+	def login(self, username, password):
+		self.browser.find_element_by_id('id_username').send_keys(username)
+		self.browser.find_element_by_id('id_password').send_keys(password)
+		login_button = self.browser.find_element_by_id('submit')
+		self.click_wait(login_button)
 
 	def test_user_can_login_and_logout(self):
 		# Q is browsing links on Bounce
@@ -12,18 +18,21 @@ class AuthenticationTest(FunctionalTest):
 		#He wants to login to have a customzed user experience.
 		#He licks the 'Login' Link which takes him to the Login form
 		login_link = self.browser.find_element_by_id('login')
-		login_link.click()
-		time.sleep(5)
+		self.click_wait(login_link)
+		# login_link.click()
+		# time.sleep(5)
 
 		#He notices the browser title change
 		self.assertEqual(self.browser.title, 'Bounce | Login')
 
 		#He enters his username and password and clicks the 'Login' submission button
-		self.browser.find_element_by_id('id_username').send_keys('test_user')
-		self.browser.find_element_by_id('id_password').send_keys('test_password')
-		login_button = self.browser.find_element_by_id('submit')
-		login_button.click()
-		time.sleep(5)
+		self.login('test_user', 'test_password')
+		# self.browser.find_element_by_id('id_username').send_keys('test_user')
+		# self.browser.find_element_by_id('id_password').send_keys('test_password')
+		# login_button = self.browser.find_element_by_id('submit')
+		# self.click_wait(login_button)
+		# login_button.click()
+		# time.sleep(5)
 
 		#He is redirected back to the homepage but now sees his username
 		#and Logout button in the header. The login button is no longer present
@@ -34,8 +43,9 @@ class AuthenticationTest(FunctionalTest):
 
 		#Q is done browsing Links and wants to Logout so he clicks the 'Logout' button
 		logout_link = self.browser.find_element_by_id('logout')
-		logout_link.click()
-		time.sleep(5)
+		self.click_wait(logout_link)
+		# logout_link.click()
+		# time.sleep(5)
 
 		#The homepage reLoads and he can no longer see his username
 		#or Logout in the header, The Login button is again present
@@ -53,11 +63,13 @@ class AuthenticationTest(FunctionalTest):
 		self.browser.get(self.live_server_url + '/login')
 
 		# He enters an invalid username and password and clicks the 'Login' button
-		self.browser.find_element_by_id('id_username').send_keys('invalid_user')
-		self.browser.find_element_by_id('id_password').send_keys('invalid_password')
-		login_button = self.browser.find_element_by_id('submit')
-		login_button.click()
-		time.sleep(5)
+		self.login('invalid_user', 'invalid_password')
+		# self.browser.find_element_by_id('id_username').send_keys('invalid_user')
+		# self.browser.find_element_by_id('id_password').send_keys('invalid_password')
+		# login_button = self.browser.find_element_by_id('submit')
+		# self.click_wait(login_button)
+		# login_button.click()
+		# time.sleep(5)
 
 		# The login form responds with an error message
 		error_message = self.browser.find_element_by_css_selector('p.error').text
@@ -65,6 +77,7 @@ class AuthenticationTest(FunctionalTest):
 
 		# Bo can't remember his login info and decides to just browse without Logging in
 		home_link = self.browser.find_element_by_css_selector('header>h1>a')
-		home_link.click()
-		time.sleep(5)
+		self.click_wait(home_link)
+		# home_link.click()
+		# time.sleep(5)
 		self.assertEqual(self.browser.current_url, self.live_server_url + '/')
