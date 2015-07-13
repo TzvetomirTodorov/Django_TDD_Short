@@ -32,7 +32,7 @@
         "is_superuser": false,
         "email": "ttodorov@locqus.com",
         "first_name": "Q",
-        "password": "pbkdf2_sha256$20000$ts2DYJPsciKG$aPg4ZsTn70oDHKPYTd0tOGW8xxjxpHpjrL0AcUInRzQ=",
+        "password": "pbkdf2_sha256$20000$z0hqdNApiY89$1tD0tA4/0kDiJAXeYpglWkD4n8L6elhzcjlmQOubxeY=",
         "last_login": "2015-07-06T17:31:20.323Z"
     }
 }

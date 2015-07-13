@@ -1,4 +1,11 @@
-<h2>Login</h2>
+
+<!-- 
+<h2>Login</h2> -->
+{% extends 'base.html' %}
+
+{% block title %} | Login{% endblock title %}
+
+{% block content %}
 <form method="post" action="{% url 'login' %}">
 	{% csrf_token %}
 
@@ -21,3 +28,4 @@
 		<input type="hidden" name="next" value="{{ next }}" />
 	</p>
 </form>
+{% endblock content %}

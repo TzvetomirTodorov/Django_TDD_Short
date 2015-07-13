@@ -1,5 +1,7 @@
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.core.urlresolvers import reverse
 from selenium import webdriver
+from bounce.settings import BASE_DIR
 
 class FunctionalTest(StaticLiveServerTestCase):
 
@@ -8,3 +10,14 @@ class FunctionalTest(StaticLiveServerTestCase):
 
 	def tearDown(self):
 		self.browser.quit()
+
+	def check_stylesheet(self, view_name):
+		self.browser.get("{0}{1}".format(self.live_server_url, reverse(view_name)))
+		css_link = self.browser.find_element_by_css_selector('link[rel="stylesheet"]')
+		self.browser.get(css_link.get_attribute('href'))
+		css_used = self.browser.find_element_by_css_selector('body').text
+
+		with open (BASE_DIR + '/links/static/css/main.css', "r") as css_file:
+			actual_css = css_file.read().strip()
+
+		self.assertEqual(css_used, actual_css)

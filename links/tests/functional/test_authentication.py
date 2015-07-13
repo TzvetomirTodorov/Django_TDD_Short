@@ -1,3 +1,4 @@
+import unittest
 import time
 from links.tests.functional.base import FunctionalTest
 
@@ -13,6 +14,9 @@ class AuthenticationTest(FunctionalTest):
 		login_link = self.browser.find_element_by_id('login')
 		login_link.click()
 		time.sleep(5)
+
+		#He notices the browser title change
+		self.assertEqual(self.browser.title, 'Bounce | Login')
 
 		#He enters his username and password and clicks the 'Login' submission button
 		self.browser.find_element_by_id('id_username').send_keys('test_user')
@@ -39,3 +43,7 @@ class AuthenticationTest(FunctionalTest):
 		self.assertNotIn('test_user', header_text)
 		self.assertNotIn('Logout', header_text)
 		self.assertIn('Login', header_text)
+
+	@unittest.skip('Silly test.')	
+	def test_login_stylesheet(self):
+		self.check_stylesheet('login')

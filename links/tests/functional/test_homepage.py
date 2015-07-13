@@ -1,7 +1,7 @@
 import unittest
 # from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 # from selenium import webdriver
-from bounce.settings import BASE_DIR
+# from bounce.settings import BASE_DIR
 from links.tests.functional.base import FunctionalTest
 
 # class HomepageTest(unittest.TestCase):
@@ -59,6 +59,9 @@ class HomepageSmallTest(FunctionalTest):
 		#He notices that the first link is from http://ward.com/wp-content/about.php
 		domain = self.browser.find_element_by_css_selector('.link small.link-domain').text
 		self.assertEqual(domain, "vimeo.com") 
+
+	def test_homepage_stylesheet(self):
+		self.check_stylesheet('home')
 		
 
 
