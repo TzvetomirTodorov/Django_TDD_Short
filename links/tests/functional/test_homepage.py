@@ -105,7 +105,30 @@ class HomepageLargeTest(FunctionalTest):
 		
 		#He notices that the first link is from http://ward.com/wp-content/about.php
 		domain = self.browser.find_element_by_css_selector('.link small.link-domain').text
-		self.assertEqual(domain, "ward.com")
+		self.assertEqual(domain, "www.youtube.com")
+
+	def test_link_boosting(self):
+		# Al opens up the Bounce homepage in his browser.
+
+		# He's not logged in so the boost button is not visible for any link.
+		# He does however see the score for each link.
+
+		# He signs in and now sees the boost button for each link.
+
+		# The boost buttons are blue for the links he personally submitted,
+		# green for the links he has boosted, and gray for the rest.
+
+		# He sees a link that he likes and clicks the boost button.
+		# It turns green and the score goes up by one.
+
+		# He accidentally clicks the boost button for another link that he
+		# doesn't like so he clisk the boost button again. It returns to
+		# gray and the score goes down by one.
+
+		# He decides to add a link of his own.
+
+		# He sees his linnk at the top of the homepage already boosted with a score of one.
+		self.fail('Finish link boosting test.')
 
 
 

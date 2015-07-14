@@ -1,62 +1,86 @@
 [
 {
+    "model": "links.link",
     "pk": 1,
     "fields": {
         "url": "http://www.digitaltutors.com/tutorial/1668-Utilizing-Shading-Networks-in-Maya",
+        "boosters": [
+            1
+        ],
         "submitted_by": 1,
         "submitted": "2015-07-06T17:40:17.676Z",
-        "title": "Utilizing Shading Networks in Maya"
-    },
-    "model": "links.link"
+        "title": "Utilizing Shading Networks in Maya",
+        "score": 1
+    }
 },
 {
+    "model": "links.link",
     "pk": 2,
     "fields": {
         "url": "http://www.reddit.com/r/django/comments/2aio0y/can_i_do_something_other_than_websites_with_django/",
+        "boosters": [
+            1
+        ],
         "submitted_by": 1,
         "submitted": "2015-07-06T17:42:05.285Z",
-        "title": "Can I do something other than websites with Django?"
-    },
-    "model": "links.link"
+        "title": "Can I do something other than websites with Django?",
+        "score": 1
+    }
 },
 {
+    "model": "links.link",
     "pk": 3,
     "fields": {
         "url": "http://www.danielforsyth.me/instagram-and-the-world-cup/",
+        "boosters": [
+            1
+        ],
         "submitted_by": 1,
         "submitted": "2015-07-06T17:48:50.739Z",
-        "title": "A quick look at the World Cup Final through Instagram using Python"
-    },
-    "model": "links.link"
+        "title": "A quick look at the World Cup Final through Instagram using Python",
+        "score": 1
+    }
 },
 {
+    "model": "links.link",
     "pk": 4,
     "fields": {
         "url": "http://www.nasa.gov/jpl/msl/pia18387",
+        "boosters": [
+            1
+        ],
         "submitted_by": 1,
         "submitted": "2015-07-06T17:49:54.678Z",
-        "title": "Curiosity Finds Iron Meteorite on Mars"
-    },
-    "model": "links.link"
+        "title": "Curiosity Finds Iron Meteorite on Mars",
+        "score": 1
+    }
 },
 {
+    "model": "links.link",
     "pk": 5,
     "fields": {
         "url": "http://www.investintech.com/resources/blog/archives/2702-4-cool-ways-to-view-3d-content-in-your-browser.html",
+        "boosters": [
+            1
+        ],
         "submitted_by": 1,
         "submitted": "2015-07-06T17:50:35.410Z",
-        "title": "Annotate 3D files in your browser"
-    },
-    "model": "links.link"
+        "title": "Annotate 3D files in your browser",
+        "score": 1
+    }
 },
 {
+    "model": "links.link",
     "pk": 6,
     "fields": {
         "url": "https://vimeo.com/79022941",
+        "boosters": [
+            1
+        ],
         "submitted_by": 1,
         "submitted": "2015-07-06T17:52:54.445Z",
-        "title": " Quadrupede Walk Cycle Tutorial"
-    },
-    "model": "links.link"
+        "title": " Quadrupede Walk Cycle Tutorial",
+        "score": 1
+    }
 }
 ]
